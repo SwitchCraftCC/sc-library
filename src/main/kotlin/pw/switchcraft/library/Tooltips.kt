@@ -7,7 +7,6 @@ import net.minecraft.text.Text
 import net.minecraft.text.Text.literal
 import net.minecraft.text.Text.translatable
 import net.minecraft.util.Formatting.*
-import pw.switchcraft.library.ScLibrary.modId
 
 object Tooltips {
   private val isClient by lazy {
@@ -18,7 +17,7 @@ object Tooltips {
     get() = isClient && Screen.hasShiftDown()
 
   private val moreInfoText = translatable(
-    "$modId.tooltip.more_info",
+    "sc-library.tooltip.more_info",
     translatable("key.keyboard.left.shift").formatted(WHITE)
   ).formatted(DARK_GRAY)
 
