@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "id": "sc-library",
+  "version": "${version}",
+
+  "name": "SwitchCraft Library",
+  "description": "Required dependency mod for SwitchCraft mods.",
+  "authors": [
+    "SwitchCraft",
+    "Lemmmy"
+  ],
+  "contact": {
+    "homepage": "https://switchcraft.pw/"
+  },
+
+  "license": "MIT",
+  "icon": "assets/sc-library/icon.png",
+
+  "custom": {
+    "modmenu": {
+      "links": {
+        "switchcraft.discord": "https://discord.switchcraft.pw"
+      },
+      "badges": ["library"],
+      "parent": {
+        "id": "switchcraft",
+        "name": "SwitchCraft",
+        "url": "https://switchcraft.pw",
+        "icon": "assets/sc-library/icon.png"
+      }
+    }
+  },
+
+  "mixins": [
+    "sc-library.mixins.json"
+  ],
+  "accessWidener": "sc-library.accesswidener",
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric-api": "*",
+    "minecraft": "${minecraft_target_version}",
+    "java": ">=17",
+    "fabric-language-kotlin": ">=${fabric_kotlin_version}"
+  }
+}
