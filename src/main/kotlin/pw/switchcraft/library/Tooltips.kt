@@ -21,10 +21,12 @@ object Tooltips {
     translatable("key.keyboard.left.shift").formatted(WHITE)
   ).formatted(DARK_GRAY)
 
-  fun addDescLines(tooltip: MutableList<Text>, baseKey: String, suffix: String = ".desc") {
+  fun addDescLines(tooltip: MutableList<Text>, baseKey: String, suffix: String = ".desc",
+                   extraLines: List<Text> = emptyList()) {
     val baseText = translatable("$baseKey$suffix")
-    val lines = baseText.string.split("\n")
+    val baseLines = baseText.string.split("\n")
       .map { literal(it.trim()).formatted(GRAY) }
+    val lines = baseLines + extraLines
 
     if (lines.size > 1 && isClient) {
       // Only show the first line if the player isn't holding shift
