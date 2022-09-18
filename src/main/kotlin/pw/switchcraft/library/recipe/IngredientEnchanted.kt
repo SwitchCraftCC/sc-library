@@ -13,7 +13,7 @@ class IngredientEnchanted(
   /** enchantment, min level **/
   private val enchantments: Map<Enchantment, Int>,
 ) : BaseIngredient() {
-  private val stacks by lazy { getItemsEnchantedWith(enchantments) }
+  private val stacks by lazy { itemsEnchantedWith(enchantments) }
 
   override fun getMatchingStacks() = stacks
   override fun isEmpty() = false
@@ -39,7 +39,7 @@ class IngredientEnchanted(
   }
 
   companion object {
-    fun getItemsEnchantedWith(enchantments: Map<Enchantment, Int>): Array<ItemStack> {
+    fun itemsEnchantedWith(enchantments: Map<Enchantment, Int>): Array<ItemStack> {
       if (enchantments.isEmpty()) return emptyArray()
 
       // Find any item in the registry which matches this predicate
@@ -47,7 +47,7 @@ class IngredientEnchanted(
 
       enchantments.forEach { (enchantment, minLevel) ->
         for (item in Registry.ITEM) {
-          if (enchantment.type != null && enchantment.type.isAcceptableItem(item)) {
+          if (enchantment.type?.isAcceptableItem(item) == true || item is EnchantedBookItem) {
             for (level in minLevel..enchantment.maxLevel) {
               val stack = ItemStack(item)
               EnchantmentHelper.set(Collections.singletonMap(enchantment, level), stack)
