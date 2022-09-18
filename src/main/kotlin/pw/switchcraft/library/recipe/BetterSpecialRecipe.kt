@@ -45,4 +45,13 @@ abstract class BetterSpecialRecipe(
   override fun isIgnoredInRecipeBook() = false
   override fun getIngredients(): DefaultedList<Ingredient> =
     DefaultedList.copyOf(null, *ingredients.toTypedArray())
+
+  override fun isEmpty(): Boolean {
+    // Recipe.isEmpty incorrectly returns true if there are any empty ingredients, but ShapedRecipe overrides this to
+    // filter out Ingredient.EMPTY first. Replicate the behaviour here.
+    val list = getIngredients()
+    return list.isEmpty() || list
+      .filter { !it.isEmpty }
+      .any { it.matchingStacks.isEmpty() }
+  }
 }
