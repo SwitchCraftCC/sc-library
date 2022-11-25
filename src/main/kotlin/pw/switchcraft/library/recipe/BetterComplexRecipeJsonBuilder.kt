@@ -7,15 +7,15 @@ import net.minecraft.advancement.CriterionMerger
 import net.minecraft.advancement.criterion.CriterionConditions
 import net.minecraft.advancement.criterion.RecipeUnlockedCriterion
 import net.minecraft.data.server.recipe.RecipeJsonProvider
-import net.minecraft.inventory.Inventory
 import net.minecraft.item.ItemConvertible
-import net.minecraft.recipe.Recipe
+import net.minecraft.recipe.CraftingRecipe
 import net.minecraft.recipe.SpecialRecipeSerializer
+import net.minecraft.recipe.book.CraftingRecipeCategory.MISC
+import net.minecraft.registry.Registries
 import net.minecraft.util.Identifier
-import net.minecraft.util.registry.Registry
 import java.util.function.Consumer
 
-class BetterComplexRecipeJsonBuilder<T : Recipe<U>, U : Inventory>(
+class BetterComplexRecipeJsonBuilder<T : CraftingRecipe>(
   output: ItemConvertible,
   private val specialSerializer: SpecialRecipeSerializer<T>
 ) {
@@ -27,8 +27,7 @@ class BetterComplexRecipeJsonBuilder<T : Recipe<U>, U : Inventory>(
   }
 
   fun offerTo(exporter: Consumer<RecipeJsonProvider>, recipeId: Identifier = itemId(outputItem)) {
-    val advancementId = Identifier(recipeId.namespace, "recipes/" +
-      (outputItem.group?.name ?: "item") + "/" + recipeId.path)
+    val advancementId = recipeId.withPrefixedPath("recipes/" + MISC.name + "/")
     val advancement = advancementBuilder
       .parent(Identifier("recipes/root")) // TODO: PR a name to yarn for field_39377
       .criterion("has_the_recipe", RecipeUnlockedCriterion.create(recipeId))
@@ -46,6 +45,6 @@ class BetterComplexRecipeJsonBuilder<T : Recipe<U>, U : Inventory>(
   }
 
   companion object {
-    private fun itemId(item: ItemConvertible) = Registry.ITEM.getId(item.asItem())
+    private fun itemId(item: ItemConvertible) = Registries.ITEM.getId(item.asItem())
   }
 }

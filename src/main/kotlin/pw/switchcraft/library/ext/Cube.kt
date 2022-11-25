@@ -1,6 +1,6 @@
 package pw.switchcraft.library.ext
 
-import net.minecraft.util.math.Vec3f
+import org.joml.Vector3f as Vec3f
 
 val unitCube: List<List<Vec3f>> = listOf(
   listOf(Vec3f(0.0f, 0.0f, 1.0f), Vec3f(0.0f, 0.0f, 0.0f), Vec3f(1.0f, 0.0f, 0.0f), Vec3f(1.0f, 0.0f, 1.0f)),

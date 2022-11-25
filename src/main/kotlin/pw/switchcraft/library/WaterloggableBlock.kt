@@ -20,7 +20,7 @@ interface WaterloggableBlock : Waterloggable {
 
   fun neighborUpdate(state: BlockState, world: WorldAccess, pos: BlockPos) {
     if (state.get(waterlogged)) {
-      world.createAndScheduleFluidTick(pos, WATER, WATER.getTickRate(world))
+      world.scheduleFluidTick(pos, WATER, WATER.getTickRate(world))
     }
   }
 

@@ -4,13 +4,15 @@ import net.minecraft.inventory.CraftingInventory
 import net.minecraft.item.ItemStack
 import net.minecraft.recipe.Ingredient
 import net.minecraft.recipe.SpecialCraftingRecipe
+import net.minecraft.recipe.book.CraftingRecipeCategory
 import net.minecraft.util.Identifier
 import net.minecraft.util.collection.DefaultedList
 import net.minecraft.world.World
 
 abstract class BetterSpecialRecipe(
-  id: Identifier
-) : SpecialCraftingRecipe(id) {
+  id: Identifier,
+  category: CraftingRecipeCategory
+) : SpecialCraftingRecipe(id, category) {
   protected open val width: Int = 3
   protected open val height: Int = 3
 

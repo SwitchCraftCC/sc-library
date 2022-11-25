@@ -5,8 +5,8 @@ import net.minecraft.enchantment.EnchantmentHelper
 import net.minecraft.item.EnchantedBookItem
 import net.minecraft.item.ItemStack
 import net.minecraft.item.Items
+import net.minecraft.registry.Registries
 import net.minecraft.util.Identifier
-import net.minecraft.util.registry.Registry
 import java.util.*
 
 class IngredientEnchanted(
@@ -29,7 +29,7 @@ class IngredientEnchanted(
 
     for (i in nbtEnchantments.indices) {
       val tag = nbtEnchantments.getCompound(i)
-      val itemEnchant = Registry.ENCHANTMENT[Identifier(tag.getString("id"))]
+      val itemEnchant = Registries.ENCHANTMENT[Identifier(tag.getString("id"))]
       if (enchantments.containsKey(itemEnchant)) {
         return tag.getShort("lvl").toInt() >= enchantments[itemEnchant]!!
       }
@@ -46,7 +46,7 @@ class IngredientEnchanted(
       val stacks = mutableListOf<ItemStack>()
 
       enchantments.forEach { (enchantment, minLevel) ->
-        for (item in Registry.ITEM) {
+        for (item in Registries.ITEM) {
           if (enchantment.type?.isAcceptableItem(item) == true || item is EnchantedBookItem) {
             for (level in minLevel..enchantment.maxLevel) {
               val stack = ItemStack(item)

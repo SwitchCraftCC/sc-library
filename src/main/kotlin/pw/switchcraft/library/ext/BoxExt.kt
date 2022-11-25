@@ -3,9 +3,9 @@ package pw.switchcraft.library.ext
 import net.minecraft.util.math.Box
 import net.minecraft.util.math.Direction
 import net.minecraft.util.math.Vec3d
-import net.minecraft.util.math.Vec3f
 import net.minecraft.util.shape.VoxelShape
 import net.minecraft.util.shape.VoxelShapes
+import org.joml.Vector3f
 import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.roundToInt
@@ -57,8 +57,8 @@ fun Box.toDiv16(): Box =
 fun Box.toDiv16VoxelShape(): VoxelShape =
   VoxelShapes.cuboid(minX / 16.0, minY / 16.0, minZ / 16.0, maxX / 16.0, maxY / 16.0, maxZ / 16.0)
 
-val Box.faces: List<List<Vec3f>>
-  get() = unitCube.map { face -> face.map { vertex -> Vec3f(
+val Box.faces: List<List<Vector3f>>
+  get() = unitCube.map { face -> face.map { vertex -> Vector3f(
     max(minX.toFloat() / 16.0f, min(maxX.toFloat() / 16.0f, vertex.x)),
     max(minY.toFloat() / 16.0f, min(maxY.toFloat() / 16.0f, vertex.y)),
     max(minZ.toFloat() / 16.0f, min(maxZ.toFloat() / 16.0f, vertex.z))
