@@ -27,7 +27,7 @@ class BetterComplexRecipeJsonBuilder<T : CraftingRecipe>(
   }
 
   fun offerTo(exporter: Consumer<RecipeJsonProvider>, recipeId: Identifier = itemId(outputItem)) {
-    val advancementId = recipeId.withPrefixedPath("recipes/" + MISC.name + "/")
+    val advancementId = recipeId.withPrefixedPath("recipes/" + MISC.asString() + "/")
     val advancement = advancementBuilder
       .parent(Identifier("recipes/root")) // TODO: PR a name to yarn for field_39377
       .criterion("has_the_recipe", RecipeUnlockedCriterion.create(recipeId))
