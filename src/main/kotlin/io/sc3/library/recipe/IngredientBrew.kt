@@ -1,4 +1,4 @@
-package pw.switchcraft.library.recipe
+package io.sc3.library.recipe
 
 import net.minecraft.entity.effect.StatusEffect
 import net.minecraft.item.ItemStack

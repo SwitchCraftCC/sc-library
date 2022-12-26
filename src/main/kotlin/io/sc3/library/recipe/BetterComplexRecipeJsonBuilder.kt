@@ -1,4 +1,4 @@
-package pw.switchcraft.library.recipe
+package io.sc3.library.recipe
 
 import com.google.gson.JsonObject
 import net.minecraft.advancement.Advancement

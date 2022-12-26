@@ -1,4 +1,4 @@
-package pw.switchcraft.library
+package io.sc3.library
 
 import net.fabricmc.api.EnvType
 import net.fabricmc.loader.api.FabricLoader

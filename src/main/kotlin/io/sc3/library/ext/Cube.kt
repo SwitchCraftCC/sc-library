@@ -1,4 +1,4 @@
-package pw.switchcraft.library.ext
+package io.sc3.library.ext
 
 import org.joml.Vector3f as Vec3f
 

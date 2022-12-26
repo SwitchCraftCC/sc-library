@@ -1,4 +1,4 @@
-package pw.switchcraft.library.ext
+package io.sc3.library.ext
 
 import net.minecraft.util.math.Box
 import net.minecraft.util.math.Direction

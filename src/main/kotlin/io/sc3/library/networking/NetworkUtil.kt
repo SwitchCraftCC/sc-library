@@ -1,4 +1,4 @@
-package pw.switchcraft.library.networking
+package io.sc3.library.networking
 
 import net.minecraft.server.world.ServerChunkManager
 import net.minecraft.world.chunk.WorldChunk

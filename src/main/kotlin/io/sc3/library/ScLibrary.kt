@@ -1,4 +1,4 @@
-package pw.switchcraft.library
+package io.sc3.library
 
 import net.minecraft.util.Identifier
 import org.slf4j.LoggerFactory

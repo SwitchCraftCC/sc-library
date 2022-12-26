@@ -1,4 +1,4 @@
-package pw.switchcraft.library.recipe
+package io.sc3.library.recipe
 
 import net.minecraft.enchantment.Enchantment
 import net.minecraft.enchantment.EnchantmentHelper

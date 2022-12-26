@@ -1,4 +1,4 @@
-package pw.switchcraft.library.recipe
+package io.sc3.library.recipe
 
 import it.unimi.dsi.fastutil.ints.IntArrayList
 import it.unimi.dsi.fastutil.ints.IntComparators

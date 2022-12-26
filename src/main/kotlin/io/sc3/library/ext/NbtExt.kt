@@ -1,4 +1,4 @@
-package pw.switchcraft.library.ext
+package io.sc3.library.ext
 
 import net.fabricmc.fabric.api.util.NbtType.*
 import net.minecraft.nbt.NbtCompound

@@ -1,4 +1,4 @@
-package pw.switchcraft.library.networking
+package io.sc3.library.networking
 
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking.createC2SPacket

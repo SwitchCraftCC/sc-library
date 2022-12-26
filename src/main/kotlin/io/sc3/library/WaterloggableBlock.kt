@@ -1,4 +1,4 @@
-package pw.switchcraft.library
+package io.sc3.library
 
 import net.minecraft.block.BlockState
 import net.minecraft.block.Waterloggable
