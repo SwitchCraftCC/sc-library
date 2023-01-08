@@ -31,6 +31,14 @@
     }
   },
 
+  "entrypoints": {
+    "main": [
+      {
+        "adapter": "kotlin",
+        "value": "io.sc3.library.ScLibrary"
+      }
+    ]
+  },
   "mixins": [
     "sc-library.mixins.json"
   ],
