@@ -38,4 +38,5 @@ dependencies {
 
 ## License
 
-This repository is licensed under the [MIT license](LICENSE).
+This mod and it's source code is licensed under the
+[MIT license](https://github.com/SwitchCraftCC/sc-library/blob/HEAD/LICENSE).
