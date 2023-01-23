@@ -10,7 +10,7 @@ object ItemFrameEvents {
   @JvmField
   val ITEM_RENDER = event<(frame: ItemFrameEntity, stack: ItemStack, matrices: MatrixStack,
                            consumers: VertexConsumerProvider, light: Int) -> Boolean> { cb ->
-    { frame, stack, matrices, consumers, light -> cb.all {
+    { frame, stack, matrices, consumers, light -> cb.any {
       it(frame, stack, matrices, consumers, light)
     } }
   }
