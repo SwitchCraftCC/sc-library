@@ -10,8 +10,8 @@ import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking.createS2CPacket
 import net.minecraft.client.MinecraftClient
 import net.minecraft.client.network.ClientPlayNetworkHandler
-import net.minecraft.network.Packet
 import net.minecraft.network.PacketByteBuf
+import net.minecraft.network.packet.Packet
 import net.minecraft.server.MinecraftServer
 import net.minecraft.server.network.ServerPlayNetworkHandler
 import net.minecraft.server.network.ServerPlayerEntity
@@ -53,7 +53,7 @@ abstract class ScLibraryPacket {
     toBytes(buf)
     return buf
   }
-
+  
   fun toC2SPacket(): Packet<*> = createC2SPacket(id, toBytes())
   fun toS2CPacket(): Packet<*> = createS2CPacket(id, toBytes())
 

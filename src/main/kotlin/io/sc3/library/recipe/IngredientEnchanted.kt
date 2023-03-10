@@ -25,7 +25,7 @@ class IngredientEnchanted(
 
     // Find any item in the registry which matches this predicate
     for (item in Registries.ITEM) {
-      if (enchantment.type?.isAcceptableItem(item) == true || item is EnchantedBookItem) {
+      if (enchantment.target?.isAcceptableItem(item) == true || item is EnchantedBookItem) {
         for (level in minLevel..enchantment.maxLevel) {
           val stack = ItemStack(item)
           EnchantmentHelper.set(Collections.singletonMap(enchantment, level), stack)

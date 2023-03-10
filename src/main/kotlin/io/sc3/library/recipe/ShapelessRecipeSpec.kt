@@ -35,7 +35,7 @@ class ShapelessRecipeSpec private constructor(
     private val GSON = GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create()
 
     fun ofRecipe(recipe: ShapelessRecipe) = ShapelessRecipeSpec(
-      recipe.group, recipe.category, recipe.output, recipe.ingredients
+      recipe.group, recipe.category, recipe.getOutput(null) /* TODO(1.19.4) */, recipe.ingredients
     )
 
     fun ofJson(json: JsonObject): ShapelessRecipeSpec {

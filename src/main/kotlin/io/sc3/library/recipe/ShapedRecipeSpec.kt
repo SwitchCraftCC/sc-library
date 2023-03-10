@@ -35,10 +35,12 @@ class ShapedRecipeSpec private constructor(
 
   companion object {
     fun ofRecipe(recipe: ShapedRecipe) = ShapedRecipeSpec(
-      recipe.group, recipe.category, recipe.width, recipe.height, recipe.ingredients, recipe.output
+      recipe.group, recipe.category, recipe.width, recipe.height, recipe.ingredients,
+      recipe.getOutput(null) // TODO(1.19.4)
     )
 
-    fun ofJson(json: JsonObject): ShapedRecipeSpec = ofRecipe(RecipeSerializer.SHAPED.read(ModId("ignore"), json))
+    fun ofJson(json: JsonObject): ShapedRecipeSpec =
+      ofRecipe(RecipeSerializer.SHAPED.read(ModId("ignore"), json))
 
     fun ofPacket(buf: PacketByteBuf): ShapedRecipeSpec {
       val group = buf.readString()
