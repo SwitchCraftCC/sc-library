@@ -2,6 +2,7 @@ package io.sc3.library.ext
 
 import net.minecraft.util.math.Box
 import net.minecraft.util.math.Direction
+import net.minecraft.util.math.RotationAxis
 import net.minecraft.util.math.Vec3d
 import net.minecraft.util.shape.VoxelShape
 import net.minecraft.util.shape.VoxelShapes
@@ -35,11 +36,16 @@ fun Box.rotateTowards(facing: Direction): Box = rotateY(when(facing) {
   else -> 0
 })
 
-fun Box.rotateY(count: Int): Box {
-  val min = Vec3d(minX - 8, minY - 8, minZ - 8)
-    .rotateY(count * Math.PI.toFloat() / 2)
-  val max = Vec3d(maxX - 8, maxY - 8, maxZ - 8)
-    .rotateY(count * Math.PI.toFloat() / 2)
+fun Box.rotate(facing: Direction) = when(facing) {
+  Direction.UP -> this
+  Direction.DOWN -> rotateX(2)
+  else -> rotateX(1).rotateTowards(facing)
+}
+
+fun Box.rotate(axis: RotationAxis, count: Int): Box {
+  val angle = count * Math.PI.toFloat() / 2
+  val min = Vec3d(minX - 8, minY - 8, minZ - 8).rotate(axis, angle)
+  val max = Vec3d(maxX - 8, maxY - 8, maxZ - 8).rotate(axis, angle)
 
   return Box(
     (min(min.x + 8, max.x + 8) * 32).roundToInt() / 32.0,
@@ -50,6 +56,10 @@ fun Box.rotateY(count: Int): Box {
     (max(min.z + 8, max.z + 8) * 32).roundToInt() / 32.0
   )
 }
+
+fun Box.rotateX(count: Int) = rotate(RotationAxis.POSITIVE_X, count)
+fun Box.rotateY(count: Int) = rotate(RotationAxis.POSITIVE_Y, count)
+fun Box.rotateZ(count: Int) = rotate(RotationAxis.POSITIVE_Z, count)
 
 fun Box.toDiv16(): Box =
   Box(minX / 16.0, minY / 16.0, minZ / 16.0, maxX / 16.0, maxY / 16.0, maxZ / 16.0)
@@ -74,3 +84,13 @@ fun randBox() = intBox(
   (0..7).random(), (0..7).random(), (0..7).random(),
   (8..15).random(), (8..15).random(), (8..15).random(),
 )
+
+fun Vec3d.rotate(axis: RotationAxis, angle: Float): Vec3d = when (axis) {
+  RotationAxis.POSITIVE_X -> rotateX(angle)
+  RotationAxis.NEGATIVE_X -> rotateX(-angle)
+  RotationAxis.POSITIVE_Y -> rotateY(angle)
+  RotationAxis.NEGATIVE_Y -> rotateY(-angle)
+  RotationAxis.POSITIVE_Z -> rotateZ(angle)
+  RotationAxis.NEGATIVE_Z -> rotateZ(-angle)
+  else -> this
+}
