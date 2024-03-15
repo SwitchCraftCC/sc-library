@@ -12,6 +12,8 @@ fun NbtCompound.putNullableCompound(key: String, value: NbtCompound?) {
   if (value != null) put(key, value) else remove(key)
 }
 
+fun NbtCompound.optBoolean(key: String): Boolean? =
+  if (contains(key, BYTE)) getByte(key) != 0.toByte() else null
 fun NbtCompound.optInt(key: String): Int? =
   if (contains(key, INT)) getInt(key) else null
 fun NbtCompound.optString(key: String): String? =
