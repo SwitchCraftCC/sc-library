@@ -4,7 +4,7 @@ plugins {
   val kotlinVersion: String by System.getProperties()
   kotlin("jvm").version(kotlinVersion)
 
-  id("fabric-loom") version "1.5-SNAPSHOT"
+  id("fabric-loom") version "1.6-SNAPSHOT"
   id("maven-publish")
   id("signing")
 }
